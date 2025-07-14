@@ -1,6 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
+
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
@@ -49,7 +50,7 @@ X_train, X_test, y_train, y_test = train_test_split(df['clean_text'], df['catego
 # Create a pipeline with Tfidf vectorizer + Naive Bayes classifier
 model = Pipeline([
     ('tfidf', TfidfVectorizer()),
-    ('clf', MultinomialNB())
+    ('clf', LogisticRegression(max_iter=200))
 ])
 
 # Fit model
