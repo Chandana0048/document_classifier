@@ -5,6 +5,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
 import joblib
+import re
+from nltk.corpus import stopwords
+import nltk
+nltk.download('stopwords')
+
 
 # Sample dataset (or replace this with your own labeled doc dataset)
 data = {
@@ -27,11 +32,19 @@ data = {
         'Resume'
     ]
 }
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text):
+    text = re.sub(r'\W+', ' ', text)  # Remove special characters
+    text = ' '.join(word for word in text.split() if word.lower() not in stop_words)
+    return text.lower()
+
 
 df = pd.DataFrame(data)
+df['clean_text'] = df['text'].apply(clean_text)
 
 # Train/Test split
-X_train, X_test, y_train, y_test = train_test_split(df['text'], df['category'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(df['clean_text'], df['category'], test_size=0.2, random_state=42)
 
 # Create a pipeline with Tfidf vectorizer + Naive Bayes classifier
 model = Pipeline([
