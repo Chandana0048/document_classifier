@@ -1,0 +1,1 @@
+“Infrrd focuses on large and medium enterprises because their document automation problems involve scale, complexity, regulatory compliance, and ROI that smaller companies typically don’t encounter. IDP’s true value shines when processing high volumes of diverse, sensitive documents with AI-driven accuracy and speed.”

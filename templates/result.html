@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result{% endblock %}
+{% block content %}
+
+<h1>📝 Prediction Result</h1>
+
+<div class="upload-form">
+    <p><strong>Filename:</strong> {{ result.filename }}</p>
+    <p><strong>Predicted Category:</strong> {{ result.prediction }}</p>
+    <p><strong>Confidence:</strong> {{ result.confidence }}%</p>
+    <h3>📝 Extracted Text Preview:</h3>
+    <p style="text-align:left; white-space: pre-wrap;">{{ result.extracted_text }}</p>
+</div>
+
+<div style="text-align:center; margin-top:30px;">
+    <a href="/" class="button">🏠 Classify Another Document</a>
+    <a href="/history" class="button">📜 View History</a>
+</div>
+
+{% endblock %}
