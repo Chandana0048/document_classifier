@@ -22,4 +22,5 @@ A Flask-based AI document classifier that can predict document types like Resume
 
 ## 📌 Run Locally
 pip install -r requirements.txt
+
 python app.py
